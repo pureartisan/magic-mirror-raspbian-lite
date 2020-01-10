@@ -13,10 +13,10 @@ MAGIC_MIRROR_APP_DIR="$HOME_DIR/magic-mirror-app"
 
 # Updating package managers
 echo 'Updating Pi - this may take a while...'
-sudo apt-get update
+sudo apt-get -y update
 echo 'Upgrading Pi - this may take a while...'
-sudo apt-get upgrade
-sudo apt-get upgrade --fix-missing
+sudo apt-get -y upgrade
+sudo apt-get -y upgrade --fix-missing
 
 echo 'Installing git'
 sudo apt install -y git
