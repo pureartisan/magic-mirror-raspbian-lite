@@ -26,4 +26,5 @@ This script sets up the following in your Raspbian Lite setup:
 * [Midori](https://www.midori-browser.org/) (light weight webkit based browser, lighter/faster than using chromium)
 * [Node](https://nodejs.org/en/) (required by MagicMirror)
 * [MagicMirror](https://magicmirror.builders/)
+* [Plymouth](https://gitlab.freedesktop.org/plymouth/plymouth) (pretty splash screens used by MagicMirror)
 * Auto login to Raspberry Pi
