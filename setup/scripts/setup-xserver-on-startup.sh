@@ -26,7 +26,7 @@ echo "Adding $XINITRC file..."
 
 # copy the xinitrc file
 cp $TEMPLATE_DIR/.xinitrc $XINITRC
-sudo chmod +x $XINITRC
+sudo chmod a+x $XINITRC
 
 # add the entry point
 echo "# start app" >> $XINITRC
@@ -60,6 +60,8 @@ else
     echo '    export MAGIC_MIRROR_DIR' >> $BASHRC
     # start the magic mirror server
     echo "    $MAGIC_MIRROR_APP_DIR/start-server.sh" >> $BASHRC
+    # sleep for 30 seconds, give a bit of a buffer for the server to warm up
+    echo '    sleep 30' >> $BASHRC
     # start xinit (browser will start using the .xinitrc file)
     echo '    xinit -- -nocursor' >> $BASHRC
     echo 'fi' >> $BASHRC
