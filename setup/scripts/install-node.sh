@@ -7,18 +7,16 @@ then
 
 else
 
-    cd ~/
+    NODE_STABLE_BRANCH="10.x"
 
-    info 'Downloading latest LTS node: v12.14.1'
-    curl -o node-v12.14.1-linux-arm64.tar.gz  https://nodejs.org/dist/v12.14.1/node-v12.14.1-linux-arm64.tar.gz
+    # sudo apt-get install --only-upgrade libstdc++6
+    node_info=$(curl -sL https://deb.nodesource.com/setup_$NODE_STABLE_BRANCH | sudo -E bash - )
 
-    info 'Extracting node v12.14.1'
-    tar -xzf node-v12.14.1-linux-arm64.tar.gz
-
-    info 'Setting up node and npm'
-    sudo cp -R node-v12.14.1-linux-arm64/* /usr/local/
-
-    info 'Cleaning up node setup files'
-    sudo rm -rf node-v12.14.1-linux-arm64
+    if [ "$(echo $node_info | grep "not currently supported")." == "." ]; then
+		sudo apt-get install -y nodejs
+    fi
 
 fi
+
+node -v
+npm -v

@@ -42,16 +42,12 @@ echo '                              \__|                                        
 echo -e "\e[0m"
 
 function info() {
-    echo -e "\e[1;45m"
-    echo "$1"
-    echo -e "\e[0m"
+    echo -e "\e[1;45m$1\e[0m"
     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =
 }
 
 function success() {
-    echo -e "\e[1;32m"
-    echo "$1"
-    echo -e "\e[0m"
+    echo -e "\e[1;32m$1\e[0m"
 }
 
 # Updating package managers
