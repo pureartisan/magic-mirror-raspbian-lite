@@ -57,13 +57,6 @@ else
     echo "$COMMENT_MM_RASP_LITE | START" >> $BASHRC
     # if not connecting via SSH only
     echo 'if [ -z "$SSH_CLIENT" ] || [ -z "$SSH_TTY" ]; then' >> $BASHRC
-    # export directory
-    echo "    MAGIC_MIRROR_DIR=$MAGIC_MIRROR_DIR" >> $BASHRC
-    echo '    export MAGIC_MIRROR_DIR' >> $BASHRC
-    # start the magic mirror server
-    echo "    $MAGIC_MIRROR_APP_DIR/start-server.sh" >> $BASHRC
-    # sleep for 30 seconds, give a bit of a buffer for the server to warm up
-    echo '    sleep 30' >> $BASHRC
     # start xinit (browser will start using the .xinitrc file)
     echo '    xinit -- -nocursor' >> $BASHRC
     echo 'fi' >> $BASHRC
