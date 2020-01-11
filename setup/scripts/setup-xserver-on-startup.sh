@@ -9,7 +9,7 @@ XINITRC_BACKUP=~/.xinitrc.backup
 BASHRC=~/.bashrc
 BASHRC_BACKUP=~/.bashrc.backup
 
-echo 'Setting up X Server on startup'
+info 'Setting up X Server on startup'
 
 # -----------------------------------------------
 # changes to .xinitrc
@@ -18,11 +18,11 @@ echo 'Setting up X Server on startup'
 # create backup if file already exists
 if [ -f "$XINITRC" ]
 then
-    echo "File existing, so creating backup of $XINITRC"
+    success "File existing, so creating backup of $XINITRC"
     cp $XINITRC $XINITRC_BACKUP
 fi
 
-echo "Adding $XINITRC file..."
+info "Adding $XINITRC file..."
 
 # copy the xinitrc file
 cp $TEMPLATE_DIR/.xinitrc $XINITRC
@@ -40,17 +40,17 @@ echo "$MAGIC_MIRROR_APP_DIR/start-browser.sh" >> $XINITRC
 if grep -q "$COMMENT_MM_RASP_LITE" "$File"
 then
 
-  echo "Entry already found, so skipping changes to $BASHRC"
+  success "Entry already found, so skipping changes to $BASHRC"
 
 else
 
-    echo "Creating backup of $BASHRC"
+    info "Creating backup of $BASHRC"
     if [ -f "$BASHRC" ]
     then
         cp $BASHRC $BASHRC_BACKUP
     fi
 
-    echo "Adding entry to $BASHRC"
+    info "Adding entry to $BASHRC"
 
     echo "$COMMENT_MM_RASP_LITE | START" >> $BASHRC
     # if not connecting via SSH only

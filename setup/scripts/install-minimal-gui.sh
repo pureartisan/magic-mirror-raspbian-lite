@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Installing Minimal GUI"
+info "Installing Minimal GUI"
 sudo apt install -y \
     xserver-xorg \
     xinit \
