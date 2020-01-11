@@ -12,6 +12,8 @@ MAGIC_MIRROR_DIR="$HOME_DIR/$MAGIC_MIRROR_NAME"
 MAGIC_MIRROR_APP_DIR="$HOME_DIR/magic-mirror-app"
 
 # show installer splash
+clear
+
 echo -e "\e[33m"
 echo '$$\      $$\                     $$\           $$\      $$\ $$\                                          $$$$$$\  '
 echo '$$$\    $$$ |                    \__|          $$$\    $$$ |\__|                                        $$  __$$\ '
