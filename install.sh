@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# stop on error
+set -e
+
 cd ~/
 HOME_DIR=$(pwd)
 
@@ -53,7 +56,7 @@ function success() {
 # Updating package managers
 info 'Updating Pi - this may take a while...'
 sudo apt-get -y update
-info 'Upgrading Pi - this may take a while...'
+info 'Upgrading Pi - this may take a while too...'
 sudo apt-get -y upgrade
 sudo apt-get -y upgrade --fix-missing
 
@@ -77,8 +80,12 @@ info 'Creating app directory'
 sudo rm -rf "$MAGIC_MIRROR_APP_DIR"
 # create app dir
 mkdir -p "$MAGIC_MIRROR_APP_DIR"
+# list the directory
+cd "$MAGIC_MIRROR_APP_DIR" && cd ..
+ls -la
 
 # export so the child scripts can access them
+export HOME_DIR
 export MAGIC_MIRROR_RASP_LITE_DIR
 export MAGIC_MIRROR_DIR
 export MAGIC_MIRROR_APP_DIR
