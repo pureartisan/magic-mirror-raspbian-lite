@@ -16,7 +16,7 @@ sudo cp "$TEMPLATE_DIR/systemd/$SERVICE_FILE" "$SERVICE_PATH"
 sudo sed -i -e "s|%%ENTRY_POINT%%|$MM_SERVER_STARTUP|g" "$SERVICE_PATH"
 
 # reset permissions
-sudo chomod 755 "$SERVICE_PATH"
+sudo chmod 755 "$SERVICE_PATH"
 sudo chown root:root "$SERVICE_PATH"
 
 info 'Enabling Magic Mirror Service...'
