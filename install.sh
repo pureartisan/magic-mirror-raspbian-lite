@@ -66,7 +66,7 @@ sudo apt install -y git
 
 info 'Cloning "Magic Mirror"'
 # remove if it already exists
-sudo rm -rf "$MAGIC_MIRROR_RASP_LITE_DIR"
+sudo rm -rf "$MAGIC_MIRROR_DIR"
 # now clone again
 git clone https://github.com/MichMich/MagicMirror "$MAGIC_MIRROR_NAME"
 
