@@ -12,7 +12,7 @@ if [ "$ARM" == 'armv6l' ]; then
     # But electron only supports `armv7l`
     npm --arch=armv7l install electron
 else
-    npm install ci
+    npm install install
 fi
 
 info 'Setting up default config'
