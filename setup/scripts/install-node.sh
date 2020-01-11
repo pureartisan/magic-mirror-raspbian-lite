@@ -30,11 +30,14 @@ else
 
     cd /usr/local
     sudo tar --strip-components 1 -xzf "$HOME_DIR/$NODE_TAR_FILE"
-    cd -
+    cd - >/dev/null
 
     rm "$HOME_DIR/$NODE_TAR_FILE"
 
 fi
 
+echo "Node version:"
 node -v
+
+echo "NPM version:"
 npm -v
