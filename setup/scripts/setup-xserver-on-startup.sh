@@ -18,11 +18,11 @@ info 'Setting up X Server on startup'
 # create backup if file already exists
 if [ -f "$XINITRC" ]
 then
-    success "File existing, so creating backup of $XINITRC"
+    echo "File existing, so creating backup of $XINITRC"
     cp $XINITRC $XINITRC_BACKUP
 fi
 
-info "Adding $XINITRC file..."
+info "Adding '$XINITRC' file..."
 
 # copy the xinitrc file
 cp $TEMPLATE_DIR/.xinitrc $XINITRC
@@ -37,10 +37,12 @@ echo "$MAGIC_MIRROR_APP_DIR/start-browser.sh" >> $XINITRC
 # changes to .bashrc
 # -----------------------------------------------
 
-if grep -q "$COMMENT_MM_RASP_LITE" "$File"
+touch "$BASHRC"
+
+if grep -q "$COMMENT_MM_RASP_LITE" "$BASHRC"
 then
 
-  success "Entry already found, so skipping changes to $BASHRC"
+  echo "Entry already found, so skipping changes to $BASHRC"
 
 else
 
