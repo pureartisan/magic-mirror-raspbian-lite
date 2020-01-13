@@ -74,13 +74,14 @@ echo "Would you like to setup the Magic Mirror server on this Raspberry Pi? [Y/n
 while true; do
     read $input
     case $input in
+        "" )
         [Yy]* )
             MAGIC_MIRROR_SETUP=true
             break;;
         [Nn]* )
             MAGIC_MIRROR_SETUP=false
             break;;
-        * ) echo "Please answer yes or no.";;
+        * ) echo "Please answer y(es) or n(o).";;
     esac
 done
 
@@ -111,6 +112,9 @@ if [ ! $MAGIC_MIRROR_SETUP ]; then
     done
 
 fi
+
+drawLine
+echo "The rest will be automatic, so sit back and relax..."
 
 # Updating package managers
 info 'Updating Pi - this may take a while...'

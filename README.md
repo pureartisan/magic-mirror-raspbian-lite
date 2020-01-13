@@ -12,7 +12,7 @@ Simply run the command on your Raspberry Pi (this has been tested on Pi Zero W).
 bash -c "$(curl -sL https://raw.githubusercontent.com/pureartisan/magic-mirror-raspbian-lite/master/install.sh)"
 ```
 
-Sit back and relax, or go have a coffee! :)
+You will be asked a upto 3 questions, and then everything will happen autoamtically. Sit back and relax, or go have a coffee! :)
 
 ### Minimum Requirements
 
