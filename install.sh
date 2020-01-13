@@ -176,3 +176,5 @@ export MAGIC_MIRROR_PORT
 
 info 'Rebooting now...'
 sudo reboot
+
+# end of the script

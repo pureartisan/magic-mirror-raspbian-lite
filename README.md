@@ -9,7 +9,7 @@ Simply run the command on your Raspberry Pi (this has been tested on Pi Zero W).
 *NOTE*: This script can take a while as it updates Rasbian package manager and pulls in all dependencies.
 
 ```
-bash -c "$(curl -sL https://raw.githubusercontent.com/pureartisan/magic-mirror-raspbian-lite/master/install.sh)"
+bash -c "$(curl -sL https://raw.githubusercontent.com/pureartisan/magic-mirror-raspbian-lite/master/install.sh?_=$(date +%s))"
 ```
 
 You will be asked a upto 3 questions, and then everything will happen autoamtically. Sit back and relax, or go have a coffee! :)
