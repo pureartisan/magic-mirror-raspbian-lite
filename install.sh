@@ -84,7 +84,7 @@ while true; do
     esac
 done
 
-if [ ! $MAGIC_MIRROR_SETUP ]; then
+if ! $MAGIC_MIRROR_SETUP; then
 
     echo "What is the HOST for the Magic Mirror server? Enter IP address (or hostname)."
     while true; do
@@ -113,7 +113,10 @@ if [ ! $MAGIC_MIRROR_SETUP ]; then
 fi
 
 drawLine
-echo "The rest will be automatic, so sit back and relax..."
+success "The rest will be automatic, so sit back and relax..."
+echo ""
+echo ""
+drawLine
 
 # Updating package managers
 info 'Updating Pi - this may take a while...'

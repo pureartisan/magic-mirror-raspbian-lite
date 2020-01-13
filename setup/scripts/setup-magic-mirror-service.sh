@@ -20,7 +20,7 @@ sudo chmod 755 "$SERVICE_PATH"
 sudo chown root:root "$SERVICE_PATH"
 
 ACTION='Enabling'
-if [ ! $MAGIC_MIRROR_SETUP ]; then
+if ! $MAGIC_MIRROR_SETUP; then
     ACTION='Disabling'
 fi
 
