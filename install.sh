@@ -72,12 +72,9 @@ echo "However, you can use setup and/or connect to another Magic Mirror server v
 
 echo "Would you like to setup the Magic Mirror server on this Raspberry Pi? [Y/n]"
 while true; do
-    read $input
+    read input
     case $input in
-        "" )
-            MAGIC_MIRROR_SETUP=true
-            break;;
-        [Yy]* )
+        ""|[Yy]* )
             MAGIC_MIRROR_SETUP=true
             break;;
         [Nn]* )
@@ -91,7 +88,7 @@ if [ ! $MAGIC_MIRROR_SETUP ]; then
 
     echo "What is the HOST for the Magic Mirror server? Enter IP address (or hostname)."
     while true; do
-        read $input
+        read input
         if [ -z "$input" ]
         then
             echo "Please enter a valid host."
@@ -103,7 +100,7 @@ if [ ! $MAGIC_MIRROR_SETUP ]; then
 
     echo "What is the PORT for the Magic Mirror server? Enter server port."
     while true; do
-        read $input
+        read input
         if ! [[ $input =~ '^[0-9]+$' ]]
         then
             echo "Please enter a valid port."
