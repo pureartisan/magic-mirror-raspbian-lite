@@ -126,16 +126,26 @@ info 'Installing git'
 sudo apt install -y git
 
 info 'Cloning "Magic Mirror"'
-# remove if it already exists
-sudo rm -rf "$MAGIC_MIRROR_DIR"
-# now clone again
-git clone "$MAGIC_MIRROR_GIT" "$MAGIC_MIRROR_NAME"
+if [ -d "$MAGIC_MIRROR_DIR" ]; then
+    success "Magic Mirror already exists, pulling latest"
+    cd "$MAGIC_MIRROR_DIR" > /dev/null
+    git reset --hard
+    git pull origin
+    cd > /dev/null
+else
+    git clone "$MAGIC_MIRROR_GIT" "$MAGIC_MIRROR_NAME"
+fi
 
 info 'Cloning "Magic Mirror for Raspbian Lite"'
-# remove if it already exists
-sudo rm -rf "$MAGIC_MIRROR_RASP_LITE_DIR"
-# now clone again
-git clone "$MAGIC_MIRROR_RASP_LITE_GIT" "$MM_RASP_LITE"
+if [ -d "$MAGIC_MIRROR_RASP_LITE_DIR" ]; then
+    success "Magic Mirror for Raspbian Lite already exists, pulling latest"
+    cd "$MAGIC_MIRROR_RASP_LITE_DIR" > /dev/null
+    git reset --hard
+    git pull origin
+    cd > /dev/null
+else
+    git clone "$MAGIC_MIRROR_RASP_LITE_GIT" "$MM_RASP_LITE"
+fi
 
 info 'Creating app directory'
 # remove if it already exists
@@ -143,8 +153,10 @@ sudo rm -rf "$MAGIC_MIRROR_APP_DIR"
 # create app dir
 mkdir -p "$MAGIC_MIRROR_APP_DIR"
 # list the directory
-cd "$MAGIC_MIRROR_APP_DIR" && cd ..
+cd "$MAGIC_MIRROR_APP_DIR" > /dev/null
+cd .. > /dev/null
 ls -la
+cd ~/ > /dev/null
 
 # export so the child scripts can access them
 export HOME_DIR

@@ -19,6 +19,19 @@ sudo sed -i -e "s|%%ENTRY_POINT%%|$MM_SERVER_STARTUP|g" "$SERVICE_PATH"
 sudo chmod 755 "$SERVICE_PATH"
 sudo chown root:root "$SERVICE_PATH"
 
-info 'Enabling Magic Mirror Service...'
+ACTION='Enabling'
+if [ ! $MAGIC_MIRROR_SETUP ]; then
+    ACTION='Disabling'
+fi
+
+info "$ACTION Magic Mirror Service..."
 sudo systemctl daemon-reload
-sudo systemctl enable "$SERVICE_NAME"
+
+# now we can check if the user wants to setup
+if $MAGIC_MIRROR_SETUP; then
+    success "Enabling service"
+    sudo systemctl enable "$SERVICE_NAME"
+else
+    success "Skipping Magic Mirror server setup (per user input)"
+    sudo systemctl disable "$SERVICE_NAME"
+fi
