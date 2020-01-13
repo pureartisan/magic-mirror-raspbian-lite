@@ -21,6 +21,8 @@ MAGIC_MIRROR_PORT="8080"
 MAGIC_MIRROR_RASP_LITE_GIT='https://github.com/pureartisan/magic-mirror-raspbian-lite.git'
 MAGIC_MIRROR_GIT='https://github.com/MichMich/MagicMirror'
 
+REGEX_NUMERIC_ONLY='^[0-9]+$'
+
 # show installer splash
 clear
 
@@ -101,7 +103,7 @@ if ! $MAGIC_MIRROR_SETUP; then
     echo "What is the PORT for the Magic Mirror server? Enter server port."
     while true; do
         read input
-        if ! [[ $input =~ '^[0-9]+$' ]]
+        if ! [[ $input =~ $REGEX_NUMERIC_ONLY ]]
         then
             echo "Please enter a valid port."
         else
