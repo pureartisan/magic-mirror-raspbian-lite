@@ -1,7 +1,8 @@
 #!/bin/bash
 
+MAGIC_MIRROR_HOST='%%MAGIC_MIRROR_HOST%%'
+MAGIC_MIRROR_PORT='%%MAGIC_MIRROR_PORT%%'
+
 unclutter & \ # hide mouse cursor
 matchbox-window-manager & \ # window manager for xinit
-midori \ # load the browser
-    -e Fullscreen \
-    -a http://localhost:8080
+midori -e Fullscreen -e Navigationbar -a "http://$MAGIC_MIRROR_HOST:$MAGIC_MIRROR_PORT"

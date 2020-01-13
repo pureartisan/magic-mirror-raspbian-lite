@@ -6,6 +6,5 @@ sudo apt install -y \
     xinit \
     matchbox \
     unclutter \
-    midori \
     plymouth \
     plymouth-themes

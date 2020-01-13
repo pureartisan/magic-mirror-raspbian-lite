@@ -14,6 +14,13 @@ MAGIC_MIRROR_DIR="$HOME_DIR/$MAGIC_MIRROR_NAME"
 
 MAGIC_MIRROR_APP_DIR="$HOME_DIR/magic-mirror-app"
 
+MAGIC_MIRROR_SETUP=true
+MAGIC_MIRROR_HOST="localhost"
+MAGIC_MIRROR_PORT="8080"
+
+MAGIC_MIRROR_RASP_LITE_GIT='https://github.com/pureartisan/magic-mirror-raspbian-lite.git'
+MAGIC_MIRROR_GIT='https://github.com/MichMich/MagicMirror'
+
 # show installer splash
 clear
 
@@ -44,14 +51,66 @@ echo '                              $$ |                                        
 echo '                              \__|                                                                                '
 echo -e "\e[0m"
 
+function drawLine() {
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =
+}
+
 function info() {
     echo -e "\e[1;45m$1\e[0m"
-    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =
+    drawLine
 }
 
 function success() {
     echo -e "\e[1;32m$1\e[0m"
 }
+
+# draw line before asking questions
+drawLine
+
+echo "Magic Mirror server will be installed on this Raspberry Pi."
+echo "However, you can use setup and/or connect to another Magic Mirror server via the network."
+
+echo "Would you like to setup the Magic Mirror server on this Raspberry Pi? [Y/n]"
+while true; do
+    read $input
+    case $input in
+        [Yy]* )
+            MAGIC_MIRROR_SETUP=true
+            break;;
+        [Nn]* )
+            MAGIC_MIRROR_SETUP=false
+            break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+if [ ! $MAGIC_MIRROR_SETUP ]; then
+
+    echo "What is the HOST for the Magic Mirror server? Enter IP address (or hostname)."
+    while true; do
+        read $input
+        if [ -z "$input" ]
+        then
+            echo "Please enter a valid host."
+        else
+            MAGIC_MIRROR_HOST=$input
+            break;
+        fi
+    done
+
+    echo "What is the PORT for the Magic Mirror server? Enter server port."
+    while true; do
+        read $input
+        if ! [[ $input =~ '^[0-9]+$' ]]
+        then
+            echo "Please enter a valid port."
+        else
+            MAGIC_MIRROR_PORT=$input
+            break;
+        fi
+    done
+
+fi
 
 # Updating package managers
 info 'Updating Pi - this may take a while...'
@@ -67,13 +126,13 @@ info 'Cloning "Magic Mirror"'
 # remove if it already exists
 sudo rm -rf "$MAGIC_MIRROR_DIR"
 # now clone again
-git clone https://github.com/MichMich/MagicMirror "$MAGIC_MIRROR_NAME"
+git clone "$MAGIC_MIRROR_GIT" "$MAGIC_MIRROR_NAME"
 
 info 'Cloning "Magic Mirror for Raspbian Lite"'
 # remove if it already exists
 sudo rm -rf "$MAGIC_MIRROR_RASP_LITE_DIR"
 # now clone again
-git clone https://github.com/pureartisan/magic-mirror-raspbian-lite.git "$MM_RASP_LITE"
+git clone "$MAGIC_MIRROR_RASP_LITE_GIT" "$MM_RASP_LITE"
 
 info 'Creating app directory'
 # remove if it already exists
@@ -89,6 +148,9 @@ export HOME_DIR
 export MAGIC_MIRROR_RASP_LITE_DIR
 export MAGIC_MIRROR_DIR
 export MAGIC_MIRROR_APP_DIR
+export MAGIC_MIRROR_SETUP
+export MAGIC_MIRROR_HOST
+export MAGIC_MIRROR_PORT
 
 # start the proper setup
 . $MAGIC_MIRROR_RASP_LITE_DIR/setup/run.sh
