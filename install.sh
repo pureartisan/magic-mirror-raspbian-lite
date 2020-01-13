@@ -75,6 +75,8 @@ while true; do
     read $input
     case $input in
         "" )
+            MAGIC_MIRROR_SETUP=true
+            break;;
         [Yy]* )
             MAGIC_MIRROR_SETUP=true
             break;;
