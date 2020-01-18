@@ -25,7 +25,7 @@ It is expected that you have the following already setup:
 
 This script sets up the following in your Raspbian Lite setup:
 * [X11](https://www.x.org/wiki/) (minimal GUI required to run a browser)
-* [Midori](https://www.midori-browser.org/) (light weight webkit based browser, lighter/faster than using chromium)
+* [Chromium](https://www.chromium.org/getting-involved/download-chromium) (using fullscreen chromium kiosk mode)
 * [Node](https://nodejs.org/en/) (required by MagicMirror)
 * [MagicMirror](https://magicmirror.builders/)
 * [Plymouth](https://gitlab.freedesktop.org/plymouth/plymouth) (pretty splash screens used by MagicMirror)
