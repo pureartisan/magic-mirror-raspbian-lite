@@ -66,6 +66,10 @@ function success() {
     echo -e "\e[1;32m$1\e[0m"
 }
 
+function error() {
+    echo -e "\e[1;91m$1\e[0m"
+}
+
 # draw line before asking questions
 drawLine
 
