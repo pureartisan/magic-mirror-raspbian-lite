@@ -15,6 +15,12 @@ else
     NODE_MAJOR_VERSION="12"
     ARM=$(uname -m)
 
+    if [[ "$ARM" = "armv7l" ]]
+    then
+        echo "Original 'ARM' value is: $ARM, so using 'armv6l'"
+        ARM="armv6l"
+    fi
+
     info "Installing node"
 
     # node official debian distribution doesn't support ARM, so using unofficial distribution
