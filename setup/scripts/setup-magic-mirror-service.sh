@@ -18,7 +18,7 @@ sudo sed -i -e "s|%%USER%%|$USER|g" "$SERVICE_PATH"
 sudo sed -i -e "s|%%HOME_DIR%%|$HOME_DIR|g" "$SERVICE_PATH"
 
 # reset permissions
-sudo chmod 655 "$SERVICE_PATH"
+sudo chmod 644 "$SERVICE_PATH"
 sudo chown root:root "$SERVICE_PATH"
 
 ACTION='Enabling'
