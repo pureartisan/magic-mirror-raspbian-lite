@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
-User=pi
-WorkingDirectory=/home/pi
+User=%%USER%%
+WorkingDirectory=%%HOME_DIR%%
 ExecStart=%%ENTRY_POINT%%
 Restart=on-failure
 
