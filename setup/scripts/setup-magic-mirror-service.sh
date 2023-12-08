@@ -14,9 +14,11 @@ sudo cp "$TEMPLATE_DIR/systemd/$SERVICE_FILE" "$SERVICE_PATH"
 
 # replace placeholders
 sudo sed -i -e "s|%%ENTRY_POINT%%|$MM_SERVER_STARTUP|g" "$SERVICE_PATH"
+sudo sed -i -e "s|%%USER%%|$USER|g" "$SERVICE_PATH"
+sudo sed -i -e "s|%%HOME_DIR%%|$HOME_DIR|g" "$SERVICE_PATH"
 
 # reset permissions
-sudo chmod 755 "$SERVICE_PATH"
+sudo chmod 644 "$SERVICE_PATH"
 sudo chown root:root "$SERVICE_PATH"
 
 ACTION='Enabling'
