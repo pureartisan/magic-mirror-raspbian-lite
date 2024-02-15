@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# based on /etc/X11/xinit/xserverrc
+exec /usr/bin/X -nolisten tcp "$@" vt${XDG_VTNR}

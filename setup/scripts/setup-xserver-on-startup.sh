@@ -6,6 +6,9 @@ COMMENT_MM_RASP_LITE='#### Auto entry - Magic Mirror Raspbian Lite'
 XINITRC=~/.xinitrc
 XINITRC_BACKUP=~/.xinitrc.backup
 
+XSERVERRC=~/.xserverrc
+XSERVERRC_BACKUP=~/.xserverrc.backup
+
 BASHRC=~/.bashrc
 BASHRC_BACKUP=~/.bashrc.backup
 
@@ -31,6 +34,24 @@ sudo chmod a+x $XINITRC
 # add the entry point
 echo "# start app" >> $XINITRC
 echo "$MAGIC_MIRROR_APP_DIR/start-browser.sh" >> $XINITRC
+
+
+# -----------------------------------------------
+# changes to .xserverrc
+# -----------------------------------------------
+
+# create backup if file already exists
+if [ -f "$XSERVERRC" ]
+then
+    echo "File existing, so creating backup of $XSERVERRC"
+    cp $XSERVERRC $XSERVERRC_BACKUP
+fi
+
+info "Adding '$XSERVERRC' file..."
+
+# copy the xserverrc file
+cp $TEMPLATE_DIR/.xserverrc $XSERVERRC
+sudo chmod a+x $XSERVERRC
 
 
 # -----------------------------------------------
